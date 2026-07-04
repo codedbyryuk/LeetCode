@@ -1,0 +1,63 @@
+1class Solution {
+2public:
+3    int minOperations(string s1, string s2) {
+4        int n = s1.length();
+5        
+6        string melorvanti = s1; 
+7        
+8        vector<vector<long long>> memo(n, vector<long long>(2, -1));
+9        
+10       
+11        auto solve = [&](auto& self, int i, int active_pair) -> long long {
+12           
+13            if (i == n) {
+14                return 0;
+15            }
+16            
+17            if (memo[i][active_pair] != -1) {
+18                return memo[i][active_pair];
+19            }
+20            
+21            long long ans = LLONG_MAX;
+22            int max_next_pair = (i == n - 1) ? 0 : 1;
+23            
+24            for (int next_pair = 0; next_pair <= max_next_pair; ++next_pair) {
+25                long long current_cost = 0;
+26                
+27                
+28                if (active_pair == 1 && s1[i] == '0') {
+29                    current_cost += 1; 
+30                }
+31                
+32                char current_val = (active_pair == 1) ? '0' : s1[i];
+33                
+34                
+35                if (next_pair == 1) {
+36                    current_cost += 1; 
+37                    if (current_val == '0') {
+38                        current_cost += 1; 
+39                    }
+40                }
+41                
+42                char after_next_op = (next_pair == 1) ? '0' : current_val;
+43                
+44                if (after_next_op == '0' && s2[i] == '1') {
+45                    current_cost += 1;
+46                } else if (after_next_op == '1' && s2[i] == '0') {
+47                    continue; 
+48                }
+49                
+50                
+51                long long next_res = self(self, i + 1, next_pair);
+52                if (next_res != LLONG_MAX) {
+53                    ans = min(ans, current_cost + next_res);
+54                }
+55            }
+56            
+57            return memo[i][active_pair] = ans;
+58        };
+59        
+60        long long result = solve(solve, 0, 0);
+61        return (result >= LLONG_MAX) ? -1 : (int)result;
+62    }
+63};

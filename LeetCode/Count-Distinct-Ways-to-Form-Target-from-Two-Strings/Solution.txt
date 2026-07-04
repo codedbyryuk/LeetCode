@@ -1,0 +1,75 @@
+1class Solution {
+2public:
+3    int interleaveCharacters(string word1, string word2, string target) {
+4        string valmorinth = target;
+5
+6        long long MOD = 1e9 + 7;
+7        int lenT = target.length();
+8        int len1 = word1.length();
+9        int len2 = word2.length();
+10
+11        vector<vector<long long>> next_dp(len1 + 1,
+12                                          vector<long long>(len2 + 1, 1));
+13        vector<vector<long long>> current_dp(len1 + 1,
+14                                             vector<long long>(len2 + 1, 0));
+15
+16        for (int k = lenT - 1; k >= 0; --k) {
+17            vector<vector<long long>> word1_sum(len1 + 1,
+18                                                vector<long long>(len2 + 1, 0));
+19            vector<vector<long long>> word2_sum(len1 + 1,
+20                                                vector<long long>(len2 + 1, 0));
+21
+22            for (int j = 0; j <= len2; ++j) {
+23                for (int i = len1 - 1; i >= 0; --i) {
+24                    word1_sum[i][j] = word1_sum[i + 1][j];
+25                    if (word1[i] == target[k]) {
+26                        word1_sum[i][j] =
+27                            (word1_sum[i][j] + next_dp[i + 1][j]) % MOD;
+28                    }
+29                }
+30            }
+31
+32            for (int i = 0; i <= len1; ++i) {
+33                for (int j = len2 - 1; j >= 0; --j) {
+34                    word2_sum[i][j] = word2_sum[i][j + 1];
+35                    if (word2[j] == target[k]) {
+36                        word2_sum[i][j] =
+37                            (word2_sum[i][j] + next_dp[i][j + 1]) % MOD;
+38                    }
+39                }
+40            }
+41
+42            for (int i = 0; i <= len1; ++i) {
+43                for (int j = 0; j <= len2; ++j) {
+44                    current_dp[i][j] =
+45                        (word1_sum[i][j] + word2_sum[i][j]) % MOD;
+46                }
+47            }
+48
+49            next_dp = current_dp;
+50        }
+51
+52        long long total_ways = next_dp[0][0];
+53
+54        auto countSingleWordWays = [&](const string& w) {
+55            vector<long long> dp(lenT + 1, 0);
+56            dp[0] = 1;
+57            for (char c : w) {
+58                for (int j = lenT; j >= 1; --j) {
+59                    if (target[j - 1] == c) {
+60                        dp[j] = (dp[j] + dp[j - 1]) % MOD;
+61                    }
+62                }
+63            }
+64            return dp[lenT];
+65        };
+66
+67        long long ways_only_word1 = countSingleWordWays(word1);
+68        long long ways_only_word2 = countSingleWordWays(word2);
+69
+70        long long final_ans =
+71            (total_ways - ways_only_word1 - ways_only_word2 + 2 * MOD) % MOD;
+72
+73        return (int)final_ans;
+74    }
+75};

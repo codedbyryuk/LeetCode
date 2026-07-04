@@ -1,0 +1,17 @@
+1class Solution {
+2public:
+3    int maxValidPairSum(vector<int>& nums, int k) {
+4        int n = nums.size();
+5        int val = k;
+6        long long max_sum=LLONG_MIN;
+7        long long max_left=LLONG_MIN;
+8
+9        for(int i=k;i<n;i++){
+10                max_left = max(max_left,(long long)nums[i-k]);
+11                max_sum = max(max_sum,max_left+nums[i]);
+12            
+13        }
+14        return (int)max_sum;
+15        
+16    }
+17};

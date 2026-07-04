@@ -16,7 +16,7 @@ public:
         }
 
         int ans =max_search;
-        vector<bool> visited(n,false);
+        vector<bool> visited(n+1,false);
 
         queue<int>q;
 

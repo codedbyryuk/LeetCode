@@ -28,6 +28,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Bit Manipulation
 |  |
 | ------- |
+| [0136-single-number](https://github.com/codedbyryuk/LeetCode/tree/master/0136-single-number) |
 | [1342-number-of-steps-to-reduce-a-number-to-zero](https://github.com/codedbyryuk/LeetCode/tree/master/1342-number-of-steps-to-reduce-a-number-to-zero) |
 ## Array
 |  |
@@ -36,6 +37,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0027-remove-element](https://github.com/codedbyryuk/LeetCode/tree/master/0027-remove-element) |
 | [0035-search-insert-position](https://github.com/codedbyryuk/LeetCode/tree/master/0035-search-insert-position) |
 | [0088-merge-sorted-array](https://github.com/codedbyryuk/LeetCode/tree/master/0088-merge-sorted-array) |
+| [0136-single-number](https://github.com/codedbyryuk/LeetCode/tree/master/0136-single-number) |
 | [3286-find-a-safe-walk-through-a-grid](https://github.com/codedbyryuk/LeetCode/tree/master/3286-find-a-safe-walk-through-a-grid) |
 ## Breadth-First Search
 |  |

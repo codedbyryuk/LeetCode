@@ -24,6 +24,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Math
 |  |
 | ------- |
+| [0070-climbing-stairs](https://github.com/codedbyryuk/LeetCode/tree/master/0070-climbing-stairs) |
 | [1342-number-of-steps-to-reduce-a-number-to-zero](https://github.com/codedbyryuk/LeetCode/tree/master/1342-number-of-steps-to-reduce-a-number-to-zero) |
 ## Bit Manipulation
 |  |
@@ -83,4 +84,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [2492-minimum-score-of-a-path-between-two-cities](https://github.com/codedbyryuk/LeetCode/tree/master/2492-minimum-score-of-a-path-between-two-cities) |
+## Dynamic Programming
+|  |
+| ------- |
+| [0070-climbing-stairs](https://github.com/codedbyryuk/LeetCode/tree/master/0070-climbing-stairs) |
+## Memoization
+|  |
+| ------- |
+| [0070-climbing-stairs](https://github.com/codedbyryuk/LeetCode/tree/master/0070-climbing-stairs) |
 <!---LeetCode Topics End-->
